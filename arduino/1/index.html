@@ -3,25 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Camcookie Security UNO R3 - Arduino - Camcookie DOCS</title>
-  <style>
-    :root { --bg:#0f1115; --text:#e7ebf3; --accent:#3ab0ff; --surface:#151922; }
-    body { margin:0; font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); transition:background .3s,color .3s; }
-    header { display:flex; align-items:center; justify-content:space-between; padding:12px 20px; background:linear-gradient(180deg,#1a1d25,#12141a); border-bottom:1px solid #222837; position:sticky; top:0; z-index:100; }
-    .brand { display:flex; align-items:center; gap:10px; font-weight:bold; font-size:18px; color:var(--accent); text-decoration:none; }
-    .brand-logo { width: 36px; height: 36px; border-radius: 8px; background-image: url('https://camcookie876.github.io/DOCS/logo.png'); background-size: cover; background-position: center; background-repeat: no-repeat; }    .search { position:relative; display:flex; align-items:center; gap:6px; }
-    .search { position:relative; display:flex; align-items:center; gap:6px; }
-    .search input { padding:6px 10px; border-radius:6px; border:1px solid #273044; background:var(--surface); color:var(--text); outline:none; width:180px; transition: all .25s ease; }
-    .search input:focus { width:260px; border-color:var(--accent); box-shadow:0 0 0 3px rgba(58,176,255,.3); background:var(--bg); }
-    .search button { padding:6px 10px; border-radius:6px; border:1px solid #273044; background:var(--accent); color:#fff; cursor:pointer; transition:background .2s; }
-    .search button:hover { background:#2a8ed6; }
-    .results { position:absolute; top:110%; right:0; left:0; background:var(--surface); border:1px solid #273044; border-radius:6px; max-height:200px; overflow-y:auto; padding:6px; z-index:200; opacity:0; transform:translateY(-5px); pointer-events:none; transition:opacity .25s ease, transform .25s ease; }
-    .results.show { opacity:1; transform:translateY(0); pointer-events:auto; }
-    .results a { display:block; padding:6px; color:var(--accent); text-decoration:none; border-radius:4px; transition:background .2s; }
-    .results a:hover { background:rgba(58,176,255,.1); }
-    .theme-toggle { margin-left:20px; cursor:pointer; padding:6px 10px; border-radius:6px; border:1px solid #273044; background:var(--surface); color:var(--text); transition:background .2s; }
-    .theme-toggle:hover { background:#1f2533; }
-    main { padding:20px; }
-  </style>
+<link rel="stylesheet" href="https://camcookie876.github.io/DOCS/styles.css">
 </head>
 <body>
   <header>
@@ -41,11 +23,66 @@
 
   <main>
     <h1>Camcookie Security - UNO R3</h1>
+    <div class="warning">
     <h3>🚧 IN PROGRESS 🚧</h3>
     <p>The code and functions may not fully work corectly. It may go off randomly.</p>
+    <p>This will only work with Microsoft Edge, on a PC. Will not work with mobil devices.</p>
+    </div>
 <div class="description-box">
-<h3>1. Add the the .ino code from <a href="https://camcookie876.github.io/DOCS/arduino/1/code/code.ino">https://camcookie876.github.io/DOCS/arduino/1/code/code.ino</a> to your arduino UNO R3</h3>
-<h3>2. Conect the device to your computer, and then open <a href="https://unoserial.oneapp.dev/">https://unoserial.oneapp.dev/</a></h3>
+<h3>1. Add the the .ino code from <a href="https://camcookie876.github.io/DOCS/arduino/1/code/code.txt">https://camcookie876.github.io/DOCS/arduino/1/code/code.txt</a> to your Arduino UNO R3</h3>
+<h3>2. Use these instructions to conect the wires.</h3>
+<h4>🟦 Ultrasonic Sensor (HC‑SR04)</h2>
+<table border="1">
+  <tr><th>Sensor Pin</th><th>Arduino Pin</th></tr>
+  <tr><td>VCC</td><td>5V</td></tr>
+  <tr><td>GND</td><td>GND</td></tr>
+  <tr><td>TRIG</td><td>D8</td></tr>
+  <tr><td>ECHO</td><td>D9</td></tr>
+</table>
+
+<h4>🌗 LDR (Light Sensor)</h2>
+<p>Use a voltage divider: LDR + 10kΩ resistor</p>
+<pre>
+5V ---- LDR ----+---- A0
+                |
+                10kΩ
+                |
+               GND
+</pre>
+
+<h4>🔘 Arm/Disarm Button</h2>
+<p>(Using internal pull‑up)</p>
+<table border="1">
+  <tr><th>Button Pin</th><th>Arduino Pin</th></tr>
+  <tr><td>One side</td><td>D2</td></tr>
+  <tr><td>Other side</td><td>GND</td></tr>
+</table>
+
+<h4>🔊 Buzzer</h2>
+<table border="1">
+  <tr><th>Buzzer Pin</th><th>Arduino Pin</th></tr>
+  <tr><td>+</td><td>D6</td></tr>
+  <tr><td>–</td><td>GND</td></tr>
+</table>
+
+<h4>💡 LEDs</h2>
+<p>Green LED (Armed)</p>
+<table border="1">
+  <tr><th>LED Pin</th><th>Arduino Pin</th></tr>
+  <tr><td>Anode</td><td>D10 (through 220Ω)</td></tr>
+  <tr><td>Cathode</td><td>GND</td></tr>
+</table>
+
+<p>Red LED (Alarm)</p>
+<table border="1">
+  <tr><th>LED Pin</th><th>Arduino Pin</th></tr>
+  <tr><td>Anode</td><td>D11 (through 220Ω)</td></tr>
+  <tr><td>Cathode</td><td>GND</td></tr>
+</table>
+<h3>3. Put the Ultrasonic Sensor (HC‑SR04) warever you want to detect motaion (WARNING: IT WILL NOT DETECT FAR AWAY MOTAION).</h3>
+<h3>4. Conect the your Arduino UNO to your computer, and then open <a href="https://unoserial.oneapp.dev/">https://unoserial.oneapp.dev/</a></h3>
+<h3>5. Click Connect then click Arduino UNO inside of the popup.</h3>
+<h3>6. Engoy!</h3>
 </div>
   </main>
 <script src="https://camcookie876.github.io/DOCS/find.js"></script><script src='https://cdn.jotfor.ms/agent/embedjs/019ac6693b6e7f1aa80c93ca8f57f16be496/embed.js'>
