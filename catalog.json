@@ -18,5 +18,15 @@
     "title": "Camcookie DOCS",
     "url": "https://camcookie876.github.io/DOCS/docs/",
     "info": "Camcookie DOCS"
+  },
+  {
+    "title": "Camcookie Arduino",
+    "url": "https://camcookie876.github.io/DOCS/arduino/",
+    "info": "Camcookie Arduino"
+  },
+  {
+    "title": "Camcookie Security - UNO R3",
+    "url": "https://camcookie876.github.io/DOCS/arduino/1/",
+    "info": "Camcookie Security - UNO R3"
   }
 ]
