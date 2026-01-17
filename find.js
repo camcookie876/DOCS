@@ -188,7 +188,6 @@ const DEV_ACTIVE_TAB_KEY = "devActiveTab";
 const DEV_TABS = [
   "elements",
   "styles",
-  "console",
   "network",
   "storage",
   "theme",
@@ -936,111 +935,6 @@ function renderPageTab() {
   });
 }
 
-// ================= DEV PASSCODE PROMPT =================
-function showDevPrompt() {
-  const wrapper = document.createElement("div");
-  Object.assign(wrapper.style, {
-    position: "fixed",
-    inset: "0",
-    background: "rgba(0,0,0,0.45)",
-    zIndex: 999997,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  });
-
-  const box = document.createElement("div");
-  Object.assign(box.style, {
-    background: "var(--surface)",
-    color: "var(--text)",
-    padding: "16px",
-    borderRadius: "10px",
-    border: "2px solid var(--accent)",
-    width: "260px",
-    boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
-    fontSize: "13px"
-  });
-
-  const title = document.createElement("div");
-  title.textContent = "Developer Code";
-  title.style.fontWeight = "bold";
-  title.style.marginBottom = "6px";
-  box.appendChild(title);
-
-  const input = document.createElement("input");
-  input.type = "password";
-  input.placeholder = "Enter code";
-  input.style.width = "100%";
-  input.style.marginBottom = "8px";
-  box.appendChild(input);
-
-  const rememberRow = document.createElement("div");
-  rememberRow.style.display = "flex";
-  rememberRow.style.flexDirection = "column";
-  rememberRow.style.gap = "4px";
-  rememberRow.style.marginBottom = "8px";
-
-  const rememberSession = document.createElement("label");
-  const rsInput = document.createElement("input");
-  rsInput.type = "radio";
-  rsInput.name = "rememberDev";
-  rsInput.value = "session";
-  rememberSession.appendChild(rsInput);
-  rememberSession.append(" Remember this session");
-
-  const remember24 = document.createElement("label");
-  const r24Input = document.createElement("input");
-  r24Input.type = "radio";
-  r24Input.name = "rememberDev";
-  r24Input.value = "24h";
-  remember24.appendChild(r24Input);
-  remember24.append(" Remember for 24 hours");
-
-  rememberRow.appendChild(rememberSession);
-  rememberRow.appendChild(remember24);
-  box.appendChild(rememberRow);
-
-  const error = document.createElement("div");
-  error.style.color = "red";
-  error.style.minHeight = "14px";
-  error.style.marginBottom = "6px";
-  box.appendChild(error);
-
-  const row = document.createElement("div");
-  row.style.display = "flex";
-  row.style.justifyContent = "flex-end";
-  row.style.gap = "6px";
-
-  const cancelBtn = document.createElement("button");
-  cancelBtn.textContent = "Cancel";
-  styleSimpleBtn(cancelBtn);
-  cancelBtn.onclick = () => document.body.removeChild(wrapper);
-
-  const okBtn = document.createElement("button");
-  okBtn.textContent = "Unlock";
-  styleSimpleBtn(okBtn);
-  okBtn.onclick = () => {
-    const val = input.value.trim();
-    if (val === DEV_CODE) {
-      let remember = "none";
-      if (r24Input.checked) remember = "24h";
-      else if (rsInput.checked) remember = "session";
-      enableDevMode({ remember });
-      document.body.removeChild(wrapper);
-    } else {
-      error.textContent = "Incorrect code";
-    }
-  };
-
-  row.appendChild(cancelBtn);
-  row.appendChild(okBtn);
-  box.appendChild(row);
-
-  wrapper.appendChild(box);
-  document.body.appendChild(wrapper);
-  input.focus();
-}
-
 // ================= RIGHT-CLICK MENU (EXPANDED) =================
 let menuOverlay = null;
 
@@ -1140,43 +1034,6 @@ function showCustomMenu(event) {
   addMenuButton("Save info as .txt", saveInfoAsTxt);
   addMenuButton("Screenshot page (print)", screenshotPage);
 
-  // Developer tools
-  addMenuButton("Developer Tools", () => {
-    if (devMode) {
-      ensureDevPanel();
-      showDevPanel();
-    } else {
-      showDevPrompt();
-    }
-  });
-
-  const closeBtn = document.createElement("button");
-  closeBtn.textContent = "Close";
-  styleMenuButton(closeBtn);
-  closeBtn.onclick = hideMenu;
-  menuOverlay.appendChild(closeBtn);
-
-  menuOverlay.style.display = "flex";
-  requestAnimationFrame(() => {
-    menuOverlay.style.opacity = "1";
-    menuOverlay.style.transform = "translate(-50%, -50%) scale(1)";
-  });
-}
-
-function addMenuButton(label, fn) {
-  const btn = document.createElement("button");
-  btn.textContent = label;
-  styleMenuButton(btn);
-  btn.onclick = () => { fn(); hideMenu(); };
-  menuOverlay.appendChild(btn);
-}
-
-function hideMenu() {
-  if (!menuOverlay) return;
-  menuOverlay.style.opacity = "0";
-  menuOverlay.style.transform = "translate(-50%, -50%) scale(0.9)";
-  setTimeout(() => { if (menuOverlay) menuOverlay.style.display = "none"; }, 180);
-}
 
 // ================= INFO EXPORTS =================
 function downloadPDF() {
