@@ -192,3 +192,24 @@ h4 {
   margin: 14px 0 6px 0;
   font-weight: 600;
 }
+.noscript-warning {
+  background: #ff4444;
+  color: white;
+  padding: 12px;
+  margin: 15px;
+  border-radius: 8px;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+  border: 1px solid #aa0000;
+}
+
+.noscript-warning h3 {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.noscript-warning p {
+  margin: 0;
+  font-size: 15px;
+}
