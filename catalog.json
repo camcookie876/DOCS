@@ -1,5 +1,10 @@
 [
   {
+    "title": "Home",
+    "url": "https://camcookie876.github.io/DOCS/",
+    "info": "Camcookie DOCS Homepage"
+  },
+  {
     "title": "Camcookie Music",
     "url": "https://camcookie876.github.io/DOCS/music/",
     "info": "Camcookie Music"
@@ -8,16 +13,6 @@
     "title": "Archive Radio",
     "url": "https://camcookie876.github.io/DOCS/music/1",
     "info": "Camcookie Music - Archive Radio"
-  },
-  {
-    "title": "Developer Panel",
-    "url": "https://camcookie876.github.io/DOCS/docs/1",
-    "info": "Camcookie DOCS - Developer Panel — Full Capability List"
-  },
-  {
-    "title": "Camcookie DOCS",
-    "url": "https://camcookie876.github.io/DOCS/docs/",
-    "info": "Camcookie DOCS"
   },
   {
     "title": "Camcookie Arduino",
