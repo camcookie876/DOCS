@@ -158,3 +158,13 @@ main {
   padding: 3px;
   border-radius: 10px;
 }
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+a:hover {
+  color: #2a8ed6;
+  text-decoration: underline;
+}
