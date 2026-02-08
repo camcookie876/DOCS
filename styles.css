@@ -168,3 +168,27 @@ a:hover {
   color: #2a8ed6;
   text-decoration: underline;
 }
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 20px 0 15px 0;
+  color: var(--accent);
+}
+
+h2 {
+  font-size: 24px;
+  margin: 18px 0 10px 0;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 20px;
+  margin: 16px 0 8px 0;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 18px;
+  margin: 14px 0 6px 0;
+  font-weight: 600;
+}
