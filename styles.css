@@ -213,3 +213,8 @@ h4 {
   margin: 0;
   font-size: 15px;
 }
+
+/* Ads */
+.ad-slot {
+  margin: 20px auto;
+}
