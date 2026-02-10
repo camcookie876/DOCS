@@ -1,3 +1,20 @@
+  //========================================
+  // Ads
+  //========================================
+ 
+(function() {
+  function loadScript(url) {
+    const s = document.createElement("script");
+    s.src = url;
+    s.async = true;
+    document.body.appendChild(s);
+  }
+
+  // Load the Camcookie Ads Loader
+  loadScript("https://camcookie876.github.io/ads/ads.js");
+})();
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
   //========================================
